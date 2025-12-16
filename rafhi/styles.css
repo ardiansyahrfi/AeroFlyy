@@ -223,17 +223,21 @@ img { width: 100%; display: block; }
   font-size: 1.2rem;
 }
 
-/* ========== HERO (DIUBAH HANYA BAGIAN INI) ========== */
+/* ========== HERO (FIX FULL) ========== */
 .header__container{
   display: grid;
-  grid-template-columns: 1.1fr 1fr; /* proporsi rapi */
-  gap: 5rem;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 6rem;
   align-items: center;
 }
+
+/* biar column kiri ga “ngegeser” */
+.hero__content{ min-width: 0; }
 
 .hero__badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 10px 14px;
   background: rgba(201, 66, 66, 0.08);
@@ -244,13 +248,15 @@ img { width: 100%; display: block; }
   margin-bottom: 12px;
 }
 
-/* ====== HERO TITLE (biar layout gak ikut gerak) ====== */
+/* TITLE DESKTOP */
 .hero__title{
   font-size: 3rem;
   line-height: 3.6rem;
-  min-height: 7.2rem; /* kunci tinggi (2 baris) */
+  min-height: 7.2rem;
+  overflow-wrap: anywhere;
 }
 
+/* type DESKTOP (pakai --type-w) */
 .hero__title .type{
   position: relative;
   display: inline-block;
@@ -279,74 +285,14 @@ img { width: 100%; display: block; }
   max-width: 560px;
 }
 
-.hero__cta { display:flex; gap: 12px; margin-top: 1.5rem; flex-wrap: wrap; }
-/* ===============================
-   HERO IMAGE – BENAR-BENAR CENTER
-   =============================== */
-
-/* grid hero */
-.header__container{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+.hero__cta {
+  display:flex;
+  gap: 12px;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
-/* kolom gambar */
-.hero__image{
-  display: flex;
-  justify-self: center;   /* 🔥 KUNCI: center di GRID */
-  align-items: center;
-}
-
-/* oval container */
-.hero__image-box{
-  width: 620px;
-  height: 260px;
-  background: #ffffff;
-  border-radius: 999px;
-  padding: 14px;
-  box-shadow: 0 25px 60px rgba(2, 6, 23, 0.18);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* gambar */
-.hero__image-box img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 999px;
-}
-
-/* ===============================
-   RESPONSIVE
-   =============================== */
-
-@media (max-width: 900px){
-  .header__container{
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero__image{
-    justify-self: center;
-    margin-top: 2rem;
-  }
-}
-
-@media (max-width: 480px){
-  .hero__image-box{
-    width: 360px;
-    height: 170px;
-  }
-}
-
-
-/* ========== END HERO ========== */
-
+/* stats */
 .hero__stats{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -362,6 +308,34 @@ img { width: 100%; display: block; }
 }
 .stat h4{ font-size: 1.25rem; }
 .stat p{ color: var(--text-light); font-size: 0.9rem; }
+
+/* HERO IMAGE OVAL (center + premium look) */
+.hero__image{
+  justify-self: center;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+.hero__image-box{
+  width: min(620px, 100%);
+  height: 260px;
+  background: #ffffff;
+  border-radius: 26px; /* outer card rounded */
+  padding: 18px;
+  box-shadow: 0 25px 60px rgba(2, 6, 23, 0.18);
+  display: grid;
+  place-items: center;
+}
+
+.hero__image-box img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 999px; /* inner oval */
+}
 
 /* ========== ABOUT ========== */
 .about__grid{
@@ -801,19 +775,10 @@ img { width: 100%; display: block; }
 
 /* ========== RESPONSIVE ========== */
 @media (width < 1100px){
-  .header__container{ grid-template-columns: 1fr; text-align:center; }
+  .header__container{ grid-template-columns: 1fr; text-align:center; gap: 2.2rem; }
   .hero__desc{ margin-inline: auto; }
   .hero__stats{ margin-inline: auto; }
-  .hero__title{ font-size: 2.6rem; line-height: 3.1rem; }
-
-  /* HERO IMAGE RESPONSIVE */
-  .hero__image{ justify-content: center; }
-  .hero__image-box{
-    width: 100%;
-    max-width: 440px;
-    height: 190px;
-    margin: 0 auto;
-  }
+  .hero__cta{ justify-content: center; }
 
   .about__grid, .careers__grid{ grid-template-columns: repeat(2, 1fr); }
   .plan__grid{ grid-template-columns: 1fr; }
@@ -849,17 +814,71 @@ img { width: 100%; display: block; }
 }
 
 @media (width < 600px){
-  .hero__title{ font-size: 2.2rem; line-height: 2.7rem; }
-  .hero__stats{ grid-template-columns: 1fr; }
-  .form__row{ grid-template-columns: 1fr; }
+  .section__container{ padding: 2.2rem 1rem; }
 
-  /* HERO IMAGE MOBILE */
-  .hero__image-box{
-    max-width: 360px;
-    height: 160px;
-    padding: 12px;
+  /* HERO: semuanya center + rapi */
+  .hero__badge{ margin-inline: auto; }
+  .hero__desc{ margin-inline: auto; }
+  .hero__cta{
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
   }
+  .hero__cta .btn{
+    width: 100%;
+    justify-content: center;
+    padding: 0.78rem 1rem;
+  }
+
+  /* FIX TYPE TEXT: jangan kepotong & ga geser kanan */
+  .hero__title{
+    text-align: center;
+    font-size: 2.15rem;
+    line-height: 2.65rem;
+    min-height: unset; /* biar fleksibel di HP */
+  }
+  .hero__title .type{
+    width: auto !important;
+    max-width: 100%;
+    white-space: normal;
+    overflow: visible;
+    word-break: break-word;
+  }
+  .hero__title .type::after{
+    transform: translateY(2px);
+  }
+
+  /* stats jadi 1 kolom biar ga “jurang” */
+  .hero__stats{
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  /* HERO IMAGE MOBILE (center) */
+  .hero__image-box{
+    max-width: 380px;
+    height: 190px;
+    padding: 14px;
+    border-radius: 22px;
+    margin-inline: auto;
+  }
+
+  .form__row{ grid-template-columns: 1fr; }
 
   .plan__image img:nth-child(1){ transform: translate(calc(-50% - 6rem), calc(-50% + 6rem)); }
   .plan__image img:nth-child(3){ transform: translate(calc(-50% + 6rem), calc(-50% + 6rem)); }
+}
+
+@media (width < 420px){
+  .hero__title{
+    font-size: 2rem;
+    line-height: 2.45rem;
+  }
+  .hero__image-box{
+    max-width: 340px;
+    height: 170px;
+  }
 }
