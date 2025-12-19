@@ -814,7 +814,10 @@ img { width: 100%; display: block; }
 }
 
 @media (width < 600px){
-  .section__container{ padding: 2.2rem 1rem; }
+ .section__container{
+  padding-block: 2.8rem;
+}
+
 
   /* HERO: semuanya center + rapi */
   .hero__badge{ margin-inline: auto; }
@@ -881,4 +884,707 @@ img { width: 100%; display: block; }
     max-width: 340px;
     height: 170px;
   }
+}/* ===== ABOUT: ARTICLE SECTION (visual, anti broken) ===== */
+.article__grid{
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.1rem;
 }
+
+.article__card{
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.article__media{
+  height: 175px;
+  overflow: hidden;
+  background: #f3f6fb;
+}
+.article__media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.article__body{
+  padding: 14px 14px 16px;
+  display: grid;
+  gap: 8px;
+}
+.article__body h3{
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.article__body p{
+  color: var(--text-light);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.article__btn{
+  margin-top: 4px;
+  display: inline-flex;
+  width: fit-content;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(241, 245, 249, 0.85);
+  font-weight: 700;
+}
+.article__btn:hover{ transform: translateY(-1px); }
+
+/* highlight icon bar (pengganti png yang sering broken) */
+.article__highlights{
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.article__highlights .hl{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(241,245,249,0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  font-weight: 800;
+  color: var(--text-dark);
+}
+.article__highlights .hl i{
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+.article__highlights .hl span{
+  font-size: 0.95rem;
+}
+
+/* responsive */
+@media (max-width: 1100px){
+  .article__grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px){
+  .article__grid{
+    grid-template-columns: repeat(4, minmax(260px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+  }
+  .article__card{ scroll-snap-align: start; }
+}/* ===== SERVICES PAGE GRID (lebih menarik) ===== */
+.services__grid{
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+/* card lebih clean */
+.services__grid .article__card{
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, .08);
+  border: 1px solid rgba(15, 23, 42, .06);
+  transform: translateY(0);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.services__grid .article__card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, .12);
+}
+
+/* gambar lebih stabil */
+.services__grid .article__media{
+  aspect-ratio: 16/10;
+  background: #f1f5f9;
+}
+
+.services__grid .article__media img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.services__grid .article__body{
+  padding: 16px 16px 18px;
+}
+
+.services__grid .article__body h3{
+  font-size: 1.05rem;
+  margin: 0 0 6px;
+}
+
+.services__grid .article__body p{
+  margin: 0 0 14px;
+  color: #64748b;
+}
+
+/* tombol lebih modern */
+.services__grid .article__btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, .12);
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+.services__grid .article__btn:hover{
+  background: #fff;
+}
+
+/* responsive */
+@media (max-width: 980px){
+  .services__grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px){
+  .services__grid{ grid-template-columns: 1fr; }
+}/* ========== WHY CHOOSE (Services Page) ========== */
+.why{
+  background: #f3f6fb;
+  padding: 56px 0;
+}
+
+.why__container{
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
+}
+
+.why__grid{
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.why__card{
+  background: #fff;
+  border-radius: 26px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.08);
+  padding: 22px 18px;
+  text-align: left;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.why__card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 22px 50px rgba(2, 6, 23, 0.12);
+}
+
+.why__icon{
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: rgba(201, 66, 66, 0.10);
+  color: var(--primary-color);
+  border: 1px solid rgba(201, 66, 66, 0.16);
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+}
+
+.why__card h3{
+  font-size: 1.05rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.why__card p{
+  margin: 0;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.why__cta{
+  margin-top: 1.6rem;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (width < 1100px){
+  .why__grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (width < 600px){
+  .why{ padding: 44px 0; }
+  .why__grid{ grid-template-columns: 1fr; }
+  .why__card{ text-align: left; }
+}/* ===== FIX SPACING WHY SECTION ===== */
+.why{
+  padding: 40px 0; /* sebelumnya terlalu besar */
+}
+
+.why__container{
+  padding-top: 2rem;
+  padding-bottom: 2.2rem;
+}
+
+/* Judul & deskripsi lebih rapat */
+.why .section__header{
+  margin-bottom: 8px;
+}
+
+.why .description{
+  margin-bottom: 22px;
+}
+
+/* Grid ke CTA jangan kejauhan */
+.why__grid{
+  margin-bottom: 26px;
+}
+
+/* CTA jangan turun terlalu jauh */
+.why__cta{
+  margin-top: 0;
+}.fleet__tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin: .85rem 0 1rem;
+}
+.fleet__tags .tag{
+  display:inline-flex;
+  align-items:center;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  border:1px solid rgba(15,23,42,.12);
+  background: rgba(255,255,255,.7);
+  font-size:.85rem;
+  color: rgba(15,23,42,.75);
+}/* === Fleet cards: tag rapi + tombol sejajar === */
+.article__card{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.article__media{
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.article__media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.article__body{
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  padding: 1.1rem 1.1rem 1.25rem;
+  flex: 1;
+}
+
+/* Tag chips rapih, konsisten */
+.fleet__tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .2rem;
+  margin-bottom: .3rem;
+}
+
+.fleet__tags .tag{
+  display: inline-flex;
+  align-items: center;
+  padding: .42rem .7rem;
+  border: 1px solid rgba(15, 23, 42, .12);
+  border-radius: 999px;
+  font-size: .9rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* CTA selalu nempel bawah (sejajar semua card) */
+.article__btn{
+  margin-top: auto;
+  align-self: flex-start;   /* biar gak melebar full */
+}/* ===== CAREERS: TAG CHIPS (ringan, modern) ===== */
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin-top:.25rem;
+  margin-bottom:.25rem;
+}
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.35rem .65rem;
+  border-radius:999px;
+  border:1px solid rgba(15,23,42,.12);
+  background: rgba(241,245,249,.85);
+  color: rgba(15,23,42,.75);
+  font-size:.85rem;
+  line-height:1;
+  white-space:nowrap;
+}
+.tag i{
+  color: var(--primary-color);
+  font-size: 1rem;
+}/* ===== CAREERS: PROCESS (lebih menarik) ===== */
+.process{
+  background: linear-gradient(180deg, rgba(241,245,249,.65), rgba(255,255,255,1));
+  padding: 52px 0;
+}
+
+.process__container{
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+}
+
+.process__grid{
+  position: relative;
+  margin-top: 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* garis penghubung */
+.process__grid::before{
+  content:"";
+  position:absolute;
+  left: 28px;
+  right: 28px;
+  top: 34px; /* sejajar dengan bulatan nomor */
+  height: 2px;
+  background: rgba(15,23,42,.10);
+  border-radius: 999px;
+  z-index: 0;
+}
+
+.process__card{
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border: 1px solid rgba(15,23,42,.06);
+  box-shadow: 0 18px 45px rgba(2,6,23,.07);
+  border-radius: 26px;
+  padding: 22px 18px 18px;
+  text-align: left;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.process__card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 26px 60px rgba(2,6,23,.10);
+}
+
+.process__num{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: #fff;
+  background: var(--primary-color);
+  border: 4px solid #fff;
+  box-shadow: 0 14px 26px rgba(2,6,23,.12);
+  margin-bottom: 14px;
+}
+
+.process__icon{
+  width: 54px;
+  height: 54px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: rgba(201,66,66,.10);
+  border: 1px solid rgba(201,66,66,.18);
+  color: var(--primary-color);
+  font-size: 1.45rem;
+  margin-bottom: 10px;
+}
+
+.process__card h3{
+  margin: 4px 0 6px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--text-dark);
+}
+
+.process__card p{
+  margin: 0;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.process__cta{
+  margin-top: 1.3rem;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (width < 1100px){
+  .process__grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .process__grid::before{ display:none; }
+}
+@media (width < 600px){
+  .process{ padding: 44px 0; }
+  .process__grid{ grid-template-columns: 1fr; }
+  .process__card{ padding: 20px 16px 16px; }
+}/* ============ CAREERS HERO (like image 2) ============ */
+.careerHero{
+  padding: 30px 0 10px;
+  background:
+    radial-gradient(900px 400px at 70% 25%, rgba(220, 38, 38, .10), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-bottom: 1px solid rgba(15, 23, 42, .06);
+}
+
+.careerHero__grid{
+  display: grid;
+  grid-template-columns: 1.2fr .9fr;
+  align-items: center;
+  gap: 42px;
+}
+
+.careerHero__pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(220, 38, 38, .08);
+  border: 1px solid rgba(220, 38, 38, .14);
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.careerHero__pill i{
+  color: #dc2626;
+  font-size: 16px;
+}
+
+.careerHero__title{
+  margin: 14px 0 10px;
+  font-size: clamp(34px, 4.2vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.careerHero__title span{
+  display: inline-block;
+  position: relative;
+}
+
+
+.careerHero__desc{
+  margin: 10px 0 18px;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 58ch;
+}
+
+.careerHero__actions{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.careerHero__stats{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.careerHero__stat{
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, .08);
+  border-radius: 16px;
+  padding: 16px 16px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, .05);
+}
+
+.careerHero__stat strong{
+  display: block;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.careerHero__stat span{
+  display: block;
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.careerHero__card{
+  background: rgba(255,255,255,.9);
+  border: 1px solid rgba(15, 23, 42, .08);
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 24px 70px rgba(2, 6, 23, .10);
+}
+
+.careerHero__imgWrap{
+  border-radius: 22px;
+  overflow: hidden;
+  background: #e2e8f0;
+  aspect-ratio: 16 / 9; /* biar proporsinya rapi */
+  display: grid;
+  place-items: center;
+}
+
+.careerHero__imgWrap img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .careerHero__grid{
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .careerHero__title span::after{
+    display: none;
+  }
+
+  .careerHero__stats{
+    grid-template-columns: 1fr;
+  }
+
+  .careerHero__card{
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .careerHero__imgWrap{
+    border-radius: 18px;
+  }
+}/* ===============================
+   CAREERS – OPENINGS FIX
+   =============================== */
+
+/* Section jarak dari tombol atas */
+#openings{
+  padding-top: 40px;
+  margin-top: -30px;
+}
+
+/* Judul & deskripsi */
+#openings .section__header{
+  margin-bottom: 8px;
+}
+
+#openings .description{
+  margin-bottom: 28px;   /* jarak ke card gambar */
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+/* Grid posisi */
+.services__grid{
+  gap: 18px; /* jarak antar card */
+}
+
+/* Card media (gambar) */
+.article__media{
+  height: 220px;          /* BIKIN TIDAK GEPENG */
+  overflow: hidden;
+  border-radius: 18px;
+  background: #f1f5f9;
+}
+
+.article__media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* jaga rasio gambar */
+  display: block;
+}
+
+/* Card body spacing */
+.article__body{
+  padding-top: 14px;
+}
+
+/* Tombol di atas (Kirim Lamaran & Lihat Posisi) */
+.reveal[style*="justify-content:center"]{
+  margin-bottom: 32px;   /* jarak ke judul OPENINGS */
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 768px){
+  #openings{
+    padding-top: 32px;
+    margin-top: -20px;
+  }
+
+  .article__media{
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px){
+  .article__media{
+    height: 180px;
+  }
+
+  #openings .description{
+    margin-bottom: 22px;
+  }
+}/* Biar konten terakhir gak “nabrak” footer */
+#contact{
+  padding-bottom: 80px;
+}
+
+/* Biar footer turun dan gak muncul strip merah doang */
+.footer{
+  margin-top: 60px;
+}
+
+
+
+
+
+
+
+
+
+

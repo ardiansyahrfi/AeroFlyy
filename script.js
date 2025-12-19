@@ -69,7 +69,7 @@ const phrases = [
   "Connecting People",
   "Business & Opportunities",
   "Safe, On-time, Modern",
-  "Your Trusted Airline Partner",
+  "Your Trusted Airline",
 ];
 const maxLen = Math.max(...phrases.map(p => p.length));
 document.documentElement.style.setProperty("--type-w", `${maxLen}ch`);
